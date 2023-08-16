@@ -203,3 +203,182 @@ class Demo{
     }
 }
 ```
+## Arrays
+1. **Linear Searching**
+```java
+//Example with number
+class Demo{
+  public static int linearSearch(int numbers[],int key){
+    for(int i=0;i<numbers.length;i++){
+      if(numbers[i]==key)
+        return i;
+    }
+       return -1;
+  }
+   public static void main(String[] args) {
+       int numbers[]={1,23,4,5,6,7,8,9};
+       int key=8;
+      int index=linearSearch(numbers, key);
+
+      if(index==-1){
+        System.out.println("Not found");
+      }
+      else{
+        System.out.println("Key found at index:"+index);
+      }
+
+   }
+}
+
+//Example with String
+class Demo{
+  public static int linearSearch(String names[],String key){
+    for(int i=0;i<names.length;i++){
+      if(names[i].equals(key))
+        return i;
+    }
+       return -1;
+  }
+   public static void main(String[] args) {
+       String names[]={"Binod","Gautam","don"};
+       String key="do";
+      int index=linearSearch(names, key);
+
+      if(index==-1){
+        System.out.println("Not found");
+      }
+      else{
+        System.out.println("Key found at index:"+ index);
+      }
+
+   }
+}
+```
+2. **Find the Smallest and Largest Number**
+```java
+public class Demo {
+    public static int getLargest(int numbers[]) {
+        int largest = Integer.MIN_VALUE;
+        int smallest=Integer.MAX_VALUE;
+        for (int i = 0; i < numbers.length; i++) {
+            if (largest < numbers[i]) {
+                largest = numbers[i];
+            }
+            if(smallest > numbers[i]){
+                smallest=numbers[i];
+            }
+        }
+        System.out.println("Smallest Number " + smallest);
+        return largest;
+    }
+    public static void main(String[] args) {
+        int numbers[] = {  2, 3, 4, 5, 6, 7, 8 };
+        System.out.println("Largest Number "+ getLargest(numbers));
+    }
+}
+
+```
+3. **Binary Search**
+>**Prerequired: sorted array**
+```java
+class Demo {
+
+    public static int binarySearch(int numbers[], int key) {
+
+        int start = 0, end = numbers.length - 1;
+
+        while (start <= end) {
+
+            int mid = (start + end) / 2;
+
+            if (numbers[mid] == key) { // found
+                return mid;
+            }
+            if (numbers[mid] < key) { // right
+                start = mid + 1;
+            } else { // left
+                end = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int numbers[] = { 1, 2, 3, 4, 5, 6 };
+        int key = 6;
+
+        int index = binarySearch(numbers, key);
+
+        if (index == -1) {
+            System.out.println("Not found");
+        } else {
+            System.out.println("Found at index " + index);
+        }
+    }
+}
+```
+4. Reverse Of an Array
+>**Space complexcity**
+```java
+class Demo{
+    public static void main(String[] args) {
+        int numbers[]={1,2,3,4,5,6,7,8,9};
+        
+        int copy[]=new int[numbers.length];
+
+       int j=numbers.length-1;
+        for(int i=0;i<numbers.length;i++){
+             copy[i]=numbers[j];
+             j--;
+        }
+
+        for(int value:copy){
+            System.out.println(value);
+        }
+    }
+}
+```
+>**Optimal Way**
+
+```java
+class Demo{
+
+    public static void Reverse(int numbers[]){
+         int start=0, end=numbers.length-1;
+
+         while(start<end){
+            int temp=numbers[start];
+            numbers[start]=numbers[end];
+            numbers[end]=temp;
+            start++;
+            end--;
+         }
+
+    }
+    public static void main(String[] args) {
+        int numbers[]={1,2,3,4,5,6,7};
+
+        Reverse(numbers);
+
+        for( int el:numbers){
+            System.out.println(el);
+        }
+    }
+}
+```
+4. **Print pair of Array**
+```java
+class Demo{
+
+    public static void main(String[] args) {
+        int numbers[]={2,4,6,8,10};
+
+        for(int i=0;i<numbers.length;i++){
+          for(int j=i+1;j<numbers.length;j++){
+            System.out.print("("+numbers[i] + "," + numbers[j] + ") ");
+          }
+          System.out.println();
+        }
+    }
+}
+```
